@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f9;
+        margin: 0;
+        padding: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #333;
+        margin-bottom: 30px;
+        font-size: 40px;
+    }
+
+    a {
+        text-decoration: none;
+        margin: 0 10px;
+    }
+    /* #home {
+        margin-right: 1350px;
+    }
+    #req {
+        margin-top: 20px;
+        margin-left: 1450px;
+    } */
+
+    button {
+        background-color: #0e539d;
+        color: white;
+        padding: 10px 20px;
+        font-size: 15px;
+        border: none;
+        border-radius: 6px;
+        cursor: point       er;
+        transition: background-color 0.3s ease;
+        font-size: 22px;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    table {
+        margin: 30px auto;
+        border-collapse: collapse;
+        width: 90%;
+        background-color: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+        padding: 12px 15px;
+        border: 1px solid #ddd;
+        text-align: left;
+        font-size: 20px;
+    }
+
+    th {
+        background-color: #0e539d;
+        color: white;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    tr:hover {
+        background-color: #e6f0ff;
+    }
+    #bar {
+        display: flex;
+        justify-content: space-between; 
+    }
+</style>
+<body>
+    <h2>Requirement: {{ client }}</h2>
+    <div id="bar">
+        <a href="{{ url_for('add_requirement', client_name=client) }}">
+            <button id="req" style="margin-left: 115px;"> + Add Requirement</button>
+        </a>
+        <a  href="{{ url_for('home') }}">
+            <button id="home" style="margin-right: 115px;" > ←  Back to home</button>
+        </a>
+    </div>
+    <table border="1">
+        <tr>
+            <th>action</th>
+            <th>Req ID</th>
+            <th>Date</th>
+            <th>Salary Budget</th>
+            <th>Mandatory Skills</th>
+            <th>Desirable Skills</th>
+            <th>Experience Range</th>
+            <th>Remark</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+            <td>
+                <a href="{{ url_for('edit_entry', client_name=client, entry_id=row.id) }}">
+                    <button style="background-color: rgb(24, 170, 36); color: white;">Edit</button>
+                </a>    
+                <form method="POST" action="{{ url_for('delete_entry', client_name=client, entry_id=row.id) }}"
+                    onsubmit="return confirm('Are you sure you want to delete this entry?');"
+                    style="display:inline;">
+                    <button type="submit" style="background-color:rgb(236, 34, 34); color:white;">Delete</button>
+                </form>
+            </td>
+            <td>{{ row.req_id }}</td>
+            <td>{{ row.date }}</td>
+            <td>{{ row.sal_budget }}</td>
+            <td>{{ row.Mandatory_skills }}</td>
+            <td>{{ row.Desirable_skills }}</td>
+            <td>{{ row.exp_range }}</td>
+            <td>{{ row.Remarks }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

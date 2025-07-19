@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Entry</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Edit Requirement for {{ client }}</h2>
+
+    <form method="POST">
+        <label>Req ID:</label>
+        <input name="req_id" value="{{ row['req_id'] }}" required>
+
+        <label>Date:</label>
+        <input type="text" name="date" value="{{ row['date'] }}" required>
+
+        <label>Salary Budget:</label>
+        <input name="sal_budget" value="{{ row['sal_budget'] }}">
+
+        <label>Mandatory Skills:</label>
+        <input name="Mandatory_skills" value="{{ row['Mandatory_skills'] }}">
+
+        <label>Desirable Skills:</label>
+        <input name="Desirable_Skills" value="{{ row['Desirable_Skills'] }}">
+
+        <label>Experience Range:</label>
+        <input name="exp_range" value="{{ row['exp_range'] }}">
+
+        <label>Remarks:</label>
+        <input name="Remarks" value="{{ row['Remarks'] }}">
+
+        <button type="submit">Update Entry</button>
+    </form>
+
+</body>
+</html>
