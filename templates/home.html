@@ -3,19 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
+    <title>Requirement Portal</title>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f6f9;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/white_bg.webp');
+            background-size:cover;
+            height: 100vh;
+            font-family: 'Roboto', sans-serif;
+            color: #212121;
+            
         }
 
+        h1 {
+            text-shadow: 0 0 8px rgba(110, 243, 33, 0.5);
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
         h2 {
+            text-shadow: 0 0 8px rgba(110, 243, 33, 0.5);
+            text-align: center;
+            margin-top: 30px;
+            color: #333;            
+        }
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px;
+            gap: 40px;
+        }
+
+        .notice-board {
+            background-color: #fff8e1;
+            border: 1px solid #ffd54f;
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 4px rgba(150, 228, 146, 0.1);
+            width: 300px;
+            min-width: 280px;
+        }
+
+        .notice-board h3 {
+            margin-top: 0;
+            color: #ff6f00;
+        }
+
+        .notice-board ul {
+            padding-left: 20px;
+        }
+
+        .notice-board li {
+            margin-bottom: 10px;
+        }
+
+        .client-section {
+            flex: 1;
+            text-align: center;
+        }
+
+        .client-section h2 {
             margin-bottom: 30px;
             color: #333;
         }
@@ -33,22 +84,55 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(34, 214, 85, 0.1);
             transition: background-color 0.3s ease;
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: #195f1d;
         }
-</style>
-<body>
-    <h1> Requirement Portal </h1>
-    <h2>Select Client</h2>
-    {% for client in clients %}
-        <form method="get" action="{{ url_for('dashboard', client_name=client) }}">
-            <button type="submit">{{ client }}</button>
-        </form>
-    {% endfor %}
 
+        /* Responsive behavior */
+        @media (max-width: 768px) {
+            .main-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .notice-board {
+                width: 90%;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Requirement Portal</h1>
+
+    <div class="main-container">
+        <div class="notice-board">
+            <h3>📋 Recent Requirements</h3>
+            <ul>
+                {% for notice in notices %}
+                    <li>
+                        <strong>{{ notice.client }}</strong> : <br>
+                        ({{ notice.date }})<br>
+                        Req ID <b>{{ notice.req_id }}</b> <br>
+                        Req Name :<b>{{ notice.req_Name }} </b><br>
+                        Remark :<i>{{ notice.Remarks }}</i>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="client-section">
+            <h2>Select Client</h2>
+            {% for client in clients %}
+                <form method="get" action="{{ url_for('dashboard', client_name=client) }}">
+                    <button type="submit">{{ client }}</button>
+                </form>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>

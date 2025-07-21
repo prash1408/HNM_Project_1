@@ -59,11 +59,17 @@
         <label>Req ID:</label>
         <input name="req_id" value="{{ row['req_id'] }}" required>
 
+        <label>Requirement Name:</label>
+        <input name="req_Name" value="{{ row['req_Name'] }}">     
+
         <label>Date:</label>
         <input type="text" name="date" value="{{ row['date'] }}" required>
 
         <label>Salary Budget:</label>
         <input name="sal_budget" value="{{ row['sal_budget'] }}">
+
+        <label>Notice Period:</label>
+        <input name="Notice_Period" value="{{ row['Notice_Period'] }}">
 
         <label>Mandatory Skills:</label>
         <input name="Mandatory_skills" value="{{ row['Mandatory_skills'] }}">
@@ -74,6 +80,12 @@
         <label>Experience Range:</label>
         <input name="exp_range" value="{{ row['exp_range'] }}">
 
+        <label>Client Spoc:</label>
+        <input name="Client_Spoc" value="{{ row['Client_Spoc'] }}">
+
+        <label>Total Upload:</label>
+        <input name="Total_Upload" value="{{ row['Total_Upload'] }}">
+        
         <label>Remarks:</label>
         <input name="Remarks" value="{{ row['Remarks'] }}">
 

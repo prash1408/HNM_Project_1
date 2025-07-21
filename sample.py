@@ -1,0 +1,12 @@
+# import sqlite3
+# conn = sqlite3.connect('Requirement.db')
+# c= conn.cursor()
+# c.execute("DROP TABLE IF EXISTS British_Petrolium")
+# c.execute("DROP TABLE IF EXISTS Chevron")
+# c.execute("DROP TABLE IF EXISTS MUFG")
+# c.execute("DROP TABLE IF EXISTS Morgan_Stanley")
+# c.execute("DROP TABLE IF EXISTS Nomura_JAVA")
+# c.execute("DROP TABLE IF EXISTS Nomura_TECH")
+# c.execute("DROP TABLE IF EXISTS Russell")
+# conn.commit()
+# conn.close()

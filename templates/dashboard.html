@@ -9,9 +9,11 @@
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         background-color: #f4f6f9;
+        background-image: url('/static/white_bg.webp');
         margin: 0;
         padding: 40px;
         text-align: center;
+        background-size: cover;
     }
 
     h2 {
@@ -24,13 +26,6 @@
         text-decoration: none;
         margin: 0 10px;
     }
-    /* #home {
-        margin-right: 1350px;
-    }
-    #req {
-        margin-top: 20px;
-        margin-left: 1450px;
-    } */
 
     button {
         background-color: #0e539d;
@@ -87,18 +82,22 @@
             <button id="req" style="margin-left: 115px;"> + Add Requirement</button>
         </a>
         <a  href="{{ url_for('home') }}">
-            <button id="home" style="margin-right: 115px;" > ←  Back to home</button>
+            <button id="home" style="margin-right: 115px;" > ←  Back to home</button>       
         </a>
     </div>
     <table border="1">
         <tr>
             <th>action</th>
             <th>Req ID</th>
+            <th>Requirement Name</th>
             <th>Date</th>
             <th>Salary Budget</th>
+            <th>Notice Period</th>
             <th>Mandatory Skills</th>
             <th>Desirable Skills</th>
             <th>Experience Range</th>
+            <th>Client Spoc</th>
+            <th>Total Upload</th>
             <th>Remark</th>
         </tr>
         {% for row in rows %}
@@ -114,11 +113,15 @@
                 </form>
             </td>
             <td>{{ row.req_id }}</td>
+            <td>{{ row.req_Name }}</td>
             <td>{{ row.date }}</td>
             <td>{{ row.sal_budget }}</td>
+            <td>{{ row.Notice_Period }}</td>
             <td>{{ row.Mandatory_skills }}</td>
             <td>{{ row.Desirable_skills }}</td>
             <td>{{ row.exp_range }}</td>
+            <td>{{ row.Client_Spoc }}</td>
+            <td>{{ row.Total_Upload }}</td>
             <td>{{ row.Remarks }}</td>
         </tr>
         {% endfor %}

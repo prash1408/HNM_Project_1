@@ -67,16 +67,24 @@
     <form method="POST" action="{{ url_for('submit', client_name=client) }}">
         <label>Req ID:</label>
             <input name="req_id" required><br>
+        <label>Requirement Name</label>
+            <input type="text" name="req_Name" required><br>
         <label>Date:</label>
             <input type="text" name="date" value='{{ today }}' required><br>
         <label>Salary Budget:</label>   
             <input name="sal_budget"><br>
+        <label>Notice Period</label>
+            <input type="text" name="Notice_Period"><br>
         <label>Mandatory_skills:</label>
             <input name="Mandatory_skills"><br>
         <label>Desirable Skills:</label>
             <input name="Desirable_Skills"><br>
         <label>Experience Range:</label>
             <input name="exp_range"><br>
+        <label>Client Spoc</label>
+            <input name="Client_Spoc"><br>
+        <label>Total Upload</label>
+            <input name="Total_Upload"><br>
         <label>Remark:</label>
             <input name="Remarks"><br>
         <button type="submit">Submit</button>
