@@ -18,6 +18,7 @@
         h2 {
             color: #333;
             margin-bottom: 30px;
+            font-size: 30px;
         }
 
         form {
@@ -26,14 +27,14 @@
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 900px;
         }
 
         label {
             display: block;
             margin: 15px 0 5px;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 22px;
         }
 
         input {
@@ -41,7 +42,7 @@
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            font-size: 18px;
+            font-size: 22px;
         }
 
         button {
@@ -65,6 +66,8 @@
 <body>
     <h2>Add Requirement for {{ client }}</h2>
     <form method="POST" action="{{ url_for('submit', client_name=client) }}">
+        <label>Status</label>
+            <input type="text" name="Status" required><br>
         <label>Req ID:</label>
             <input name="req_id" required><br>
         <label>Requirement Name</label>
@@ -75,6 +78,8 @@
             <input name="sal_budget"><br>
         <label>Notice Period</label>
             <input type="text" name="Notice_Period"><br>
+        <label>Location</label>
+            <input type="text" name="Location">
         <label>Mandatory_skills:</label>
             <input name="Mandatory_skills"><br>
         <label>Desirable Skills:</label>

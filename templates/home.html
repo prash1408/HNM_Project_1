@@ -14,7 +14,7 @@
             background-size:cover;
             height: 100vh;
             font-family: 'Roboto', sans-serif;
-            color: #212121;
+            color: #212121; 
             
         }
 
@@ -23,12 +23,15 @@
             text-align: center;
             margin-top: 30px;
             color: #333;
+            font-size: 80px;
         }
         h2 {
             text-shadow: 0 0 8px rgba(110, 243, 33, 0.5);
             text-align: center;
             margin-top: 30px;
-            color: #333;            
+            color: #333;   
+            font-size: 40px;
+
         }
         .main-container {
             display: flex;
@@ -45,7 +48,8 @@
             border-radius: 10px;
             box-shadow: 0px 2px 4px rgba(150, 228, 146, 0.1);
             width: 300px;
-            min-width: 280px;
+            min-width: 550px;
+            font-size: 20px;
         }
 
         .notice-board h3 {
@@ -64,6 +68,21 @@
         .client-section {
             flex: 1;
             text-align: center;
+
+        }
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .button-grid form {
+            flex: 1 1 calc(33.33%-40px);
+            display: flex;
+            justify-content: center;
         }
 
         .client-section h2 {
@@ -72,7 +91,7 @@
         }
 
         form {
-            display: inline-block;
+            display: flex;
             margin: 10px;
         }
 
@@ -86,6 +105,7 @@
             cursor: pointer;
             box-shadow: 0 4px 6px rgba(34, 214, 85, 0.1);
             transition: background-color 0.3s ease;
+            font-size: 25px;
         }
 
         button:hover {
@@ -115,23 +135,28 @@
             <ul>
                 {% for notice in notices %}
                     <li>
-                        <strong>{{ notice.client }}</strong> : <br>
+                        <strong style="color: red; font-size: 22px;">{{ notice.client }}</strong> : <br>
                         ({{ notice.date }})<br>
                         Req ID <b>{{ notice.req_id }}</b> <br>
                         Req Name :<b>{{ notice.req_Name }} </b><br>
-                        Remark :<i>{{ notice.Remarks }}</i>
+                        <b>Mandatory Skills :</b>{{notice.Mandatory_skills}}<br>
+                        <b>Remark :</b><i>{{ notice.Remarks }}</i>
                     </li>
+                    <hr>
                 {% endfor %}
+                
             </ul>
         </div>
 
         <div class="client-section">
             <h2>Select Client</h2>
-            {% for client in clients %}
-                <form method="get" action="{{ url_for('dashboard', client_name=client) }}">
-                    <button type="submit">{{ client }}</button>
-                </form>
-            {% endfor %}
+            <div class="button-grid">
+                {% for client in clients %}
+                    <form method="get" action="{{ url_for('dashboard', client_name=client) }}">
+                        <button type="submit">{{ client }}</button>
+                    </form>
+                {% endfor %}
+            </div>
         </div>
     </div>
 </body>

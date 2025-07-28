@@ -19,12 +19,14 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
             width: 100%;
-            max-width: 500px;
+            max-width: 900px;
         }
 
         label {
             display: block;
             margin-top: 15px;
+            font-weight: bold;
+            font-size: 22px;
         }
 
         input {
@@ -33,6 +35,7 @@
             margin-top: 5px;
             border-radius: 5px;
             border: 1px solid #ccc;
+            font-size: 22px;
         }
 
         button {
@@ -43,7 +46,7 @@
             color: white;
             border: none;
             border-radius: 6px;
-            font-size: 16px;
+            font-size: 22px;
         }
 
         button:hover {
@@ -56,6 +59,9 @@
     <h2>Edit Requirement for {{ client }}</h2>
 
     <form method="POST">
+        <label>Status</label>
+        <input name="Status" value="{{ row['Status'] }}">
+
         <label>Req ID:</label>
         <input name="req_id" value="{{ row['req_id'] }}" required>
 
@@ -70,6 +76,9 @@
 
         <label>Notice Period:</label>
         <input name="Notice_Period" value="{{ row['Notice_Period'] }}">
+
+        <label>Location</label>
+        <input name="Location" value="{{ row['Location'] }}">
 
         <label>Mandatory Skills:</label>
         <input name="Mandatory_skills" value="{{ row['Mandatory_skills'] }}">
