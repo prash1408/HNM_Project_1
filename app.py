@@ -64,7 +64,7 @@ def get_access_token():
     data = {
         'client_id': CLIENT_ID,
         'scope': 'https://graph.microsoft.com/.default',
-        'client_secret': CLIENT_SECRET,
+        'client_secret': 'KNt8Q~.GVokYoZ56ViRxR-kfbSij3ovfqbqNEaTp',
         'grant_type': 'client_credentials'
     }
     response = requests.post(url, data=data)
