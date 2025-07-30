@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+from dotenv import load_dotenv
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from openpyxl import load_workbook, Workbook
@@ -16,6 +17,11 @@ db = SQLAlchemy(app)
 EXCEL_FOLDER = r"\\Server\d\Requirement_Excel"
 os.makedirs(EXCEL_FOLDER, exist_ok=True)
 
+load_dotenv()
+
+TENANT_ID= os.getenv('TENANT_ID')
+CLIENT_ID= os.getenv('CLIENT_ID')
+CLIENT_SECRET= os.getenv('CLIENT_SECRET')
 
 EXCEL_PATHS = {
     'Nomura_JAVA': os.path.join(EXCEL_FOLDER, "Nomura_Java.xlsx"),
@@ -36,9 +42,9 @@ COLUMN_ORDER = {
                  'exp_range', 'sal_budget', 'Notice_Period', 'Total_Upload', 'Location', 'Client_Spoc', 'Remarks']
 }
 
-TENANT_ID = '4b31b85e-bd6e-4e7e-afb1-cc86899fac33'
-CLIENT_ID = '75cfcf77-e81e-43d6-b01b-aefd9fa5dd37'
-CLIENT_SECRET = 'KNt8Q~.GVokYoZ56ViRxR-kfbSij3ovfqbqNEaTp'
+# TENANT_ID = '4b31b85e-bd6e-4e7e-afb1-cc86899fac33'
+# CLIENT_ID = '75cfcf77-e81e-43d6-b01b-aefd9fa5dd37'
+# CLIENT_SECRET = 'KNt8Q~.GVokYoZ56ViRxR-kfbSij3ovfqbqNEaTp'
 
 
 class Requirement(db.Model):
