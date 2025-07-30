@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 from dotenv import load_dotenv
+import psycopg2
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from openpyxl import load_workbook, Workbook
@@ -21,7 +22,7 @@ load_dotenv()
 
 TENANT_ID= os.getenv('TENANT_ID')
 CLIENT_ID= os.getenv('CLIENT_ID')
-CLIENT_SECRET= os.getenv('CLIENT_SECRET')
+CLIENT_SECRET= os.getenv('AZURE_CLIENT_SECRET')
 
 EXCEL_PATHS = {
     'Nomura_JAVA': os.path.join(EXCEL_FOLDER, "Nomura_Java.xlsx"),
@@ -41,11 +42,6 @@ COLUMN_ORDER = {
     'sequence': ['Status', 'date', 'req_id', 'req_Name', 'Mandatory_skills', 'Desirable_Skills',
                  'exp_range', 'sal_budget', 'Notice_Period', 'Total_Upload', 'Location', 'Client_Spoc', 'Remarks']
 }
-
-# TENANT_ID = '4b31b85e-bd6e-4e7e-afb1-cc86899fac33'
-# CLIENT_ID = '75cfcf77-e81e-43d6-b01b-aefd9fa5dd37'
-# CLIENT_SECRET = 'KNt8Q~.GVokYoZ56ViRxR-kfbSij3ovfqbqNEaTp'
-
 
 class Requirement(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -70,12 +66,11 @@ def get_access_token():
     data = {
         'client_id': CLIENT_ID,
         'scope': 'https://graph.microsoft.com/.default',
-        'client_secret': 'KNt8Q~.GVokYoZ56ViRxR-kfbSij3ovfqbqNEaTp',
+        'client_secret': CLIENT_SECRET,
         'grant_type': 'client_credentials'
     }
     response = requests.post(url, data=data)
     return response.json().get('access_token')
-
 
 def append_to_excel_onedrive(row_data):
     access_token = get_access_token()
